@@ -115,6 +115,8 @@ pub enum SortOrder {
     Descending,   
 }
 
+
+#[derive(Clone, Debug, Copy)]
 /// Data transformation options for the fred/series/observation endpoint
 /// 
 /// [https://research.stlouisfed.org/docs/api/fred/series_observations.html#units](https://research.stlouisfed.org/docs/api/fred/series_observations.html#units)
@@ -139,6 +141,8 @@ pub enum Units {
     LOG,
 }
 
+
+#[derive(Clone, Debug, Copy)]
 /// Options for data series frequency
 /// 
 /// The frequency cannot exceed the native frequency of the data series.
