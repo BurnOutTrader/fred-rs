@@ -253,7 +253,7 @@ mod tests {
 
     #[test]
     fn releases_dates_with_options() {
-        let mut c = match FredClient::new() {
+        let c = match FredClient::new() {
             Ok(c) => c,
             Err(msg) => {
                 println!("{}", msg);

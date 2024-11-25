@@ -304,7 +304,7 @@ mod tests {
 
     #[test]
     fn series_search_related_tags_with_options_passing() {
-        let mut c = match FredClient::new() {
+        let c = match FredClient::new() {
             Ok(c) => c,
             Err(msg) => {
                 println!("{}", msg);
@@ -340,7 +340,7 @@ mod tests {
 
     #[test]
     fn series_search_related_tags_with_options_failure() {
-        let mut c = match FredClient::new() {
+        let c = match FredClient::new() {
             Ok(c) => c,
             Err(msg) => {
                 println!("{}", msg);

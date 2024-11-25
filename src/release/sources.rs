@@ -95,7 +95,7 @@ mod tests {
 
     #[test]
     fn release_sources_with_options() {
-        let mut c = match FredClient::new() {
+        let c = match FredClient::new() {
             Ok(c) => c,
             Err(msg) => {
                 println!("{}", msg);

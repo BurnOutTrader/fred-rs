@@ -90,7 +90,7 @@ mod tests {
 
     #[test]
     fn category_children_no_options() {
-        let mut c = match FredClient::new() {
+        let c = match FredClient::new() {
             Ok(c) => c,
             Err(msg) => {
                 println!("{}", msg);

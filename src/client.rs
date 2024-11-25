@@ -121,7 +121,7 @@ impl FredClient {
         self.api_key = String::from(key);
     }
 
-    fn get_request(&mut self, url: &str) -> Result<Response, String> {
+    fn get_request(&self, url: &str) -> Result<Response, String> {
         match self.client.get(url).send() {
             Ok(r) => Ok(r),
             Err(msg) => Err(msg.to_string()),
@@ -136,7 +136,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series.html#series_id)
     pub fn series(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::Builder>
     ) -> Result<series::Response, String> {
@@ -182,7 +182,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_categories.html#series_id)
     pub fn series_categories(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::categories::Builder>
     ) -> Result<category::Response, String> {
@@ -228,7 +228,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_observation.html#series_id)
     pub fn series_observation(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::observation::Builder>
     ) -> Result<series::observation::Response, String> {
@@ -274,7 +274,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_release.html#series_id)
     pub fn series_release(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::release::Builder>
     ) -> Result<release::Response, String> {
@@ -320,7 +320,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_tags.html#series_id)
     pub fn series_tags(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::tags::Builder>
     ) -> Result<tags::Response, String> {
@@ -364,7 +364,7 @@ impl FredClient {
 
     /// [See fred_rs::series::updates](../series/updates/index.html)
     pub fn series_updates(
-        &mut self,
+        &self,
         builder: Option<series::updates::Builder>
     ) -> Result<series::updates::Response, String> {
 
@@ -409,7 +409,7 @@ impl FredClient {
     /// # Arguments
     /// `series_id` - The id for a series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_vintagedates.html#series_id)
     pub fn series_vintagedates(
-        &mut self,
+        &self,
         series_id: &str,
         builder: Option<series::vintagedates::Builder>
     ) -> Result<series::vintagedates::Response, String> {
@@ -459,7 +459,7 @@ impl FredClient {
     /// # Arguments
     /// `search_text` - The words to match against economic data series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_search.html#search_text)
     pub fn series_search(
-        &mut self,
+        &self,
         search_text: &str,
         builder: Option<series::search::Builder>
     ) -> Result<series::Response, String> {
@@ -507,7 +507,7 @@ impl FredClient {
     /// # Arguments
     /// `series_search_text` - The words to match against economic data series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_search_tags.html#search_text)
     pub fn series_search_tags(
-        &mut self,
+        &self,
         series_search_text: &str,
         builder: Option<series::search::tags::Builder>
     ) -> Result<tags::Response, String> {
@@ -555,7 +555,7 @@ impl FredClient {
     /// # Arguments
     /// `series_search_text` - The words to match against economic data series [[Link]](https://research.stlouisfed.org/docs/api/fred/series_search_related_tags.html#search_text)
     pub fn series_search_related_tags(
-        &mut self,
+        &self,
         series_search_text: &str,
         builder: series::search::related_tags::Builder
     ) -> Result<tags::Response, String> {
@@ -604,7 +604,7 @@ impl FredClient {
 
     /// [See fred_rs::tags](../tags/index.html)
     pub fn tags(
-        &mut self,
+        &self,
         builder: Option<tags::Builder>
     ) -> Result<tags::Response, String> {
         let mut url: String = format!(
@@ -645,7 +645,7 @@ impl FredClient {
 
     /// [See fred_rs::tags::series](../tags/series/index.html)
     pub fn tags_series(
-        &mut self,
+        &self,
         builder: tags::series::Builder
     ) -> Result<series::Response, String> {
         let mut url: String = format!(
@@ -689,7 +689,7 @@ impl FredClient {
 
     /// [See fred_rs::related_tags](../related_tags/index.html)
     pub fn related_tags(
-        &mut self,
+        &self,
         builder: related_tags::Builder
     ) -> Result<tags::Response, String> {
         let mut url: String = format!(
@@ -733,7 +733,7 @@ impl FredClient {
 
     /// [See fred_rs::sources](../sources/index.html)
     pub fn sources(
-        &mut self,
+        &self,
         builder: Option<sources::Builder>
     ) -> Result<source::Response, String> {
         let mut url: String = format!(
@@ -780,7 +780,7 @@ impl FredClient {
     /// # Arguments
     /// `source_id` - The id for a source [[Link]](https://research.stlouisfed.org/docs/api/fred/source.html#source_id)
     pub fn source(
-        &mut self,
+        &self,
         source_id: usize,
         builder: Option<source::Builder>
     ) -> Result<source::Response, String> {
@@ -826,7 +826,7 @@ impl FredClient {
     /// # Arguments
     /// `source_id` - The id for a source [[Link]](https://research.stlouisfed.org/docs/api/fred/source_releases.html#source_id)
     pub fn source_releases(
-        &mut self,
+        &self,
         source_id: usize,
         builder: Option<source::releases::Builder>
     ) -> Result<release::Response, String> {
@@ -875,7 +875,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/category.html#category_id)
     pub fn category(
-        &mut self,
+        &self,
         category_id: usize
     ) -> Result<category::Response, String> {
         let url: String = format!(
@@ -915,7 +915,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/category_children.html#category_id)
     pub fn category_children(
-        &mut self,
+        &self,
         category_id: usize,
         builder: Option<category::children::Builder>,
     ) -> Result<category::Response, String> {
@@ -961,7 +961,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/category_related.html#category_id)
     pub fn category_related(
-        &mut self,
+        &self,
         category_id: usize,
         builder: Option<category::related::Builder>,
     ) -> Result<category::Response, String> {
@@ -1007,7 +1007,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/series.html#category_id)
     pub fn category_series(
-        &mut self,
+        &self,
         category_id: usize,
         builder: Option<category::series::Builder>
     ) -> Result<series::Response, String> {
@@ -1053,7 +1053,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/category_tags.html#category_id)
     pub fn category_tags(
-        &mut self,
+        &self,
         category_id: usize,
         builder: Option<category::tags::Builder>
     ) -> Result<tags::Response, String> {
@@ -1099,7 +1099,7 @@ impl FredClient {
     /// # Arguments
     /// `category_id` - The id for a category [[Link]](https://research.stlouisfed.org/docs/api/fred/category_related_tags.html#category_id)
     pub fn category_related_tags(
-        &mut self,
+        &self,
         category_id: usize,
         builder: category::related_tags::Builder
     ) -> Result<tags::Response, String> {
@@ -1145,7 +1145,7 @@ impl FredClient {
 
     /// [See fred_rs::releases](../releases/index.html)
     pub fn releases(
-        &mut self,
+        &self,
         builder: Option<releases::Builder>
     ) -> Result<release::Response, String> {
         let mut url: String = format!(
@@ -1186,7 +1186,7 @@ impl FredClient {
 
     /// [See fred_rs::releases::dates](../releases/dates/index.html)
     pub fn releases_dates(
-        &mut self,
+        &self,
         builder: Option<releases::dates::Builder>
     ) -> Result<releases::dates::Response, String> {
         let mut url: String = format!(
@@ -1233,7 +1233,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release.html#release_id)
     pub fn release(
-        &mut self,
+        &self,
         release_id: usize,
         builder: Option<release::Builder>
     ) -> Result<release::Response, String> {
@@ -1279,7 +1279,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release_series.html#release_id)
     pub fn release_series(
-        &mut self,
+        &self,
         release_id: usize,
         builder: Option<release::series::Builder>
     ) -> Result<series::Response, String> {
@@ -1325,7 +1325,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release_sources.html#release_id)
     pub fn release_sources(
-        &mut self,
+        &self,
         release_id: usize,
         builder: Option<release::sources::Builder>
     ) -> Result<source::Response, String> {
@@ -1371,7 +1371,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release_tags.html#release_id)
     pub fn release_tags(
-        &mut self,
+        &self,
         release_id: usize,
         builder: Option<release::tags::Builder>
     ) -> Result<tags::Response, String> {
@@ -1417,7 +1417,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release_related_tags.html#release_id)
     pub fn release_related_tags(
-        &mut self,
+        &self,
         release_id: usize,
         builder: release::related_tags::Builder
     ) -> Result<tags::Response, String> {
@@ -1463,7 +1463,7 @@ impl FredClient {
     /// # Arguments
     /// `release_id` - The id for a release [[Link]](https://research.stlouisfed.org/docs/api/fred/release_tables.html#release_id)
     pub fn release_tables(
-        &mut self,
+        &self,
         release_id: usize,
         builder: Option<release::tables::Builder>
     ) -> Result<release::tables::Response, String> {
